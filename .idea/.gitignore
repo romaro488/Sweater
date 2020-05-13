@@ -1,21 +1,16 @@
-# Default ignored files
-/shelf/
-/workspace.xml
-# Datasource local storage ignored files
-/dataSources/
-/dataSources.local.xml
-# Editor-based HTTP Client requests
-/httpRequests/
 # Eclipse
 .classpath
 .project
 .settings/
-bin/
 
 # Intellij
 .idea/
 *.iml
 *.iws
+out/
+
+# VSCode
+.vscode
 
 # Mac
 .DS_Store
@@ -23,4 +18,119 @@ bin/
 # Maven
 log/
 target/
+
+#Emacs
+*~
+
+*.bak
+
+# ya do commet
+# Directories #
+/build/
 build/
+/bin/
+.gradle/
+/.gradle/
+/gradle/
+gradle/
+target/
+node/
+node_modules
+
+KhPP_Portal/**/build/
+KhPP_Portal/**/.gradle/
+/.gradle/
+
+# Text #
+*.txt
+*.doc
+*.docx
+
+
+*.log
+
+
+
+# OS Files #
+.DS_Store
+
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
+*.db
+
+# Intellij
+/.idea
+*.iml
+*.iws
+
+######################
+# Windows
+######################
+
+# Windows image file caches
+Thumbs.db
+
+# Folder config file
+Desktop.ini
+
+######################
+# OSX
+######################
+
+.DS_Store
+.svn
+
+# Thumbnails
+._*
+
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes
+
+
+######################
+# Eclipse
+######################
+
+*.pydevproject
+.project
+.metadata
+bin/**
+tmp/**
+tmp/**/*
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.classpath
+.settings/
+.loadpath
+/src/main/resources/rebel.xml
+# External tool builders
+.externalToolBuilders/
+
+
+
+# Locally stored "Eclipse launch configurations"
+*.launch
+
+# CDT-specific
+.cproject
+
+# PDT-specific
+.buildpath
+
+# Logs from tomcat
+logs/
+
+#Vagrant
+.vagrant
+provision_lock
+
+# Else
+package-lock.json
