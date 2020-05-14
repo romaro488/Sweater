@@ -34,23 +34,35 @@ public class Message {
 		return author != null ? author.getUsername() : "<none>";
 	}
 
-	public Integer getId() {
-		return id;
-	}
-
-	public String getText() {
-		return text;
-	}
-
-	public String getTag() {
-		return tag;
-	}
-
 	public User getAuthor() {
 		return author;
 	}
 
 	public void setAuthor(User author) {
 		this.author = author;
+	}
+
+	public void setText(String text) {
+		this.text = text;
+	}
+
+	public String getText() {
+		return text;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getTag() {
+		return tag;
+	}
+
+	public void setTag(String tag) {
+		this.tag = tag;
 	}
 }
