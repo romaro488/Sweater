@@ -1,21 +1,28 @@
 package ua.polosmak.controller;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import ua.polosmak.domain.Message;
 import ua.polosmak.domain.User;
 import ua.polosmak.repository.MessageRepository;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Map;
+import java.util.UUID;
 
 @Controller
 public class MainController {
 
 	private final MessageRepository messageRepo;
+	@Value("${upload.path}")
+	private String uploadPath;
 
 	public MainController(MessageRepository messageRepo) {
 		this.messageRepo = messageRepo;
@@ -46,9 +53,24 @@ public class MainController {
 	public String add(
 			@AuthenticationPrincipal User user,
 			@RequestParam String text,
-			@RequestParam String tag, Map<String, Object> model
-	) {
+			@RequestParam String tag, Map<String, Object> model,
+			@RequestParam("file") MultipartFile file
+	) throws IOException {
 		Message message = new Message(text, tag, user);
+
+		if (file != null && !file.getOriginalFilename().isEmpty()) {
+			File uploadDir = new File(uploadPath);
+			if (!uploadDir.exists()) {
+				uploadDir.mkdir();
+			}
+
+			String uuidFile = UUID.randomUUID().toString();
+			String resultFileName = uuidFile + "." + file.getOriginalFilename();
+
+			file.transferTo(new File(uploadPath + "/" + resultFileName));
+
+			message.setFilename(resultFileName);
+		}
 
 		messageRepo.save(message);
 
